@@ -768,6 +768,9 @@ type Retry struct {
 	InitialInterval ptypes.Duration `json:"initialInterval,omitempty" toml:"initialInterval,omitempty" yaml:"initialInterval,omitempty" export:"true"`
 	// MaxRequestBodyBytes defines the maximum size for the request body.
 	MaxRequestBodyBytes *int64 `json:"maxRequestBodyBytes,omitempty" toml:"maxRequestBodyBytes,omitempty" yaml:"maxRequestBodyBytes,omitempty" export:"true"`
+	// MaxBackoff defines the upper bound on the wait time between two retries.
+	// If unspecified, the wait time is capped at twice the initialInterval.
+	MaxBackoff ptypes.Duration `json:"maxBackoff,omitempty" toml:"maxBackoff,omitempty" yaml:"maxBackoff,omitempty" export:"true"`
 	// Status defines the range of HTTP status codes to retry on.
 	Status []string `json:"status,omitempty" toml:"status,omitempty" yaml:"status,omitempty" export:"true"`
 	// DisableRetryOnNetworkError defines whether to disable the retry if an error occurs when transmitting the request to the server.
